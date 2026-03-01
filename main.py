@@ -16,7 +16,6 @@ def processcommand(c):
         webbrowser.open("https://chatgpt.com")
     if "open github" in c.lower():
         webbrowser.open("https://github.com/PrajwalKatkar")
-
 if __name__=="__main__":
     speak("Initializing Jarvis.......")
     while True:
@@ -38,5 +37,6 @@ if __name__=="__main__":
                     processcommand(command)
         except Exception as e:
             print("Sphinx error; {0}".format(e))
+
 
 
