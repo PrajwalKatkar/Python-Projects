@@ -35,7 +35,6 @@ if __name__=="__main__":
     speak("Initializing Jarvis.......")
     while True:
         #listen for wake word jarvis
-
         # obtain audio from the microphone
         r = sr.Recognizer()
         try:
@@ -52,5 +51,6 @@ if __name__=="__main__":
                     processcommand(command)
         except Exception as e:
             print("Sphinx error; {0}".format(e))
+
 
 
