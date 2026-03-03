@@ -1,7 +1,8 @@
 import speech_recognition as sr
 import webbrowser 
 import pyttsx3 
-#pip install pocketsphinx krlena 
+import musiclibrary
+#pip install pocketsphinx
 recognizer = sr.Recognizer()
 engine=pyttsx3.init()
 def speak(text):
@@ -10,15 +11,22 @@ def speak(text):
 def processcommand(c):
     if "open google" in c.lower():
         webbrowser.open("https://google.com")
-    if "open youtube" in c.lower():
+    elif "open youtube" in c.lower():
         webbrowser.open("https://youtube.com")
-    if "open chatgpt" in c.lower():
+    elif "open chatgpt" in c.lower():
         webbrowser.open("https://chatgpt.com")
-    if "open github" in c.lower():
+    elif "open github" in c.lower():
         webbrowser.open("https://github.com/PrajwalKatkar")
+    elif c.lower().startswith("play"):
+        song = c.lower().split(" ")[1]
+        link = musiclibrary.music[song]
+        webbrowser.open(link)
 if __name__=="__main__":
     speak("Initializing Jarvis.......")
     while True:
+        #listen for wake word jarvis
+
+        # obtain audio from the microphone
         r = sr.Recognizer()
         try:
             with sr.Microphone() as source:
@@ -34,7 +42,5 @@ if __name__=="__main__":
                     processcommand(command)
         except Exception as e:
             print("Sphinx error; {0}".format(e))
-
-
 
 
